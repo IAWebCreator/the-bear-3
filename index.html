@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the bear | The Bully of All Bears</title>
+    <meta name="description" content="This is not your average market downturn. This is a hostile takeover. This is $TB, the bully of all bears.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/2391250f-349b-4d04-beec-47c34964120e.png?">
+
+    <style>
+        /* ------------------- */
+        /* --- CSS Reset & Globals --- */
+        /* ------------------- */
+        :root {
+            --orange: #FF6600;
+            --black: #0D0D0D;
+            --white: #F5F5F5;
+            --gray: #a0a0a0;
+
+            --font-heading: 'Anton', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Offset for sticky header */
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ------------------- */
+        /* --- General Styling --- */
+        /* ------------------- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            color: var(--orange);
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        p {
+            max-width: 65ch;
+            margin-bottom: 20px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ------------------- */
+        /* --- Header --- */
+        /* ------------------- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .header__logo img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .header__logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .header__cta {
+            font-family: var(--font-heading);
+            background-color: var(--orange);
+            color: var(--black);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .header__cta:hover {
+            transform: scale(1.05);
+            background-color: var(--white);
+        }
+
+        /* ------------------- */
+        /* --- Hero Section --- */
+        /* ------------------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero__content {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero__logo {
+            width: clamp(150px, 30vw, 250px);
+            height: auto;
+            margin-bottom: 20px;
+            animation: bear-breathing 4s ease-in-out infinite;
+        }
+
+        @keyframes bear-breathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .hero__subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-top: -20px;
+            margin-bottom: 40px;
+        }
+
+        .hero__cta {
+            font-family: var(--font-heading);
+            background-color: var(--orange);
+            color: var(--black);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border: 2px solid var(--orange);
+        }
+
+        .hero__cta:hover {
+            transform: scale(1.05);
+            background-color: var(--black);
+            color: var(--orange);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--black), transparent);
+            z-index: 3;
+        }
+
+        /* ------------------- */
+        /* --- About Section --- */
+        /* ------------------- */
+        .about {
+            background-color: var(--black);
+            position: relative;
+            padding-top: 0;
+        }
+
+        .about .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 60ch;
+        }
+        
+        .about p strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* ------------------- */
+        /* --- Tokenomics Section --- */
+        /* ------------------- */
+        .tokenomics {
+            background-color: var(--black);
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            padding: 120px 0;
+            margin-top: -80px;
+            margin-bottom: -80px;
+        }
+        
+        @media (max-width: 768px) {
+            .tokenomics {
+                clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 98%);
+            }
+        }
+
+        .tokenomics__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tokenomics__card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tokenomics__card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.1);
+        }
+
+        .tokenomics__card h3 {
+            color: var(--orange);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tokenomics__card p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0;
+        }
+        
+        .contract-info {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .contract-info p {
+            margin: 0 auto 15px;
+            color: var(--gray);
+        }
+        
+        .contract-address {
+            display: inline-flex;
+            align-items: center;
+            background-color: #1a1a1a;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .contract-address:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .contract-address__text {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--white);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .contract-address__icon {
+            margin-left: 15px;
+            width: 18px;
+            height: 18px;
+            fill: var(--orange);
+        }
+        
+        .copy-feedback {
+            display: block;
+            margin-top: 10px;
+            color: var(--orange);
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* ------------------- */
+        /* --- How to Buy Section --- */
+        /* ------------------- */
+        .how-to-buy {
+            background-color: var(--black);
+        }
+
+        .how-to-buy__steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .how-to-buy__step {
+            background-color: transparent;
+            padding: 30px;
+            border: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .how-to-buy__step-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .how-to-buy__step h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: var(--white);
+        }
+
+        .how-to-buy__step p {
+            color: var(--gray);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .how-to-buy__cta-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* ------------------- */
+        /* --- Roadmap Section --- */
+        /* ------------------- */
+        .roadmap {
+            background-color: var(--black);
+            position: relative;
+            padding-bottom: 120px;
+        }
+        
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: rgba(255, 102, 0, 0.2);
+            z-index: 0;
+        }
+
+        .roadmap__item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .roadmap__item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .roadmap__item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .roadmap__item:nth-child(even) {
+            left: 50%;
+        }
+
+        .roadmap__item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -11px;
+            top: 30px;
+            background-color: var(--black);
+            border: 4px solid var(--orange);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .roadmap__item:nth-child(even)::after {
+            left: -9px;
+        }
+        
+        .roadmap__item h3 {
+            color: var(--orange);
+            font-size: 1.8rem;
+        }
+        
+        .roadmap__item ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        
+        .roadmap__item li {
+            color: var(--gray);
+        }
+
+        /* ------------------- */
+        /* --- Footer --- */
+        /* ------------------- */
+        .footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 40px 5%;
+            clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+            margin-top: -80px;
+        }
+        
+        .footer__content {
+            padding-top: 60px;
+        }
+
+        .footer__logo {
+            height: 60px;
+            width: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer h3 {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            max-width: none;
+            margin-top: 20px;
+        }
+        
+        .footer p a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+        
+        .footer p a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ------------------- */
+        /* --- Responsive Design --- */
+        /* ------------------- */
+        @media (max-width: 768px) {
+            .header__logo-text {
+                display: none;
+            }
+            
+            .contract-address__text {
+                max-width: 200px;
+            }
+
+            .roadmap::before {
+                left: 20px;
+            }
+            
+            .roadmap__item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                text-align: left !important;
+                left: 0 !important;
+            }
+            
+            .roadmap__item::after {
+                left: 11px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="#hero" class="header__logo">
+            <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/2391250f-349b-4d04-beec-47c34964120e.png?" alt="the bear logo">
+            <span class="header__logo-text">the bear</span>
+        </a>
+        <a href="#how-to-buy" class="header__cta">Buy $TB</a>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero__content">
+                <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/2391250f-349b-4d04-beec-47c34964120e.png?" alt="the bear silhouette" class="hero__logo fade-in">
+                <h1 class="fade-in" style="transition-delay: 0.2s;">the bear</h1>
+                <p class="hero__subtitle fade-in" style="transition-delay: 0.4s;">the bully of all bears</p>
+                <a href="#about" class="hero__cta fade-in" style="transition-delay: 0.6s;">Enter The Den</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="fade-in">A NEW APEX PREDATOR</h2>
+                <p class="fade-in">The market is a wilderness. For too long, the bears have signaled retreat and fear. That era is over.</p>
+                <p class="fade-in"><strong>We are the force that others fear.</strong> We don't follow the trend; we are the trend. $TB embodies raw, untamed dominance. This is the power to shake the foundations and build a new order from the ground up.</p>
+            </div>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section id="tokenomics" class="tokenomics">
+            <div class="container">
+                <h2 class="fade-in">THE LAW OF THE WILD</h2>
+                <div class="tokenomics__grid">
+                    <div class="tokenomics__card fade-in">
+                        <h3>Total Supply</h3>
+                        <p>1B $TB</p>
+                    </div>
+                    <div class="tokenomics__card fade-in" style="transition-delay: 0.2s;">
+                        <h3>Transaction Tax</h3>
+                        <p>0% / 0%</p>
+                    </div>
+                    <div class="tokenomics__card fade-in" style="transition-delay: 0.4s;">
+                        <h3>Liquidity</h3>
+                        <p>Locked</p>
+                    </div>
+                </div>
+                <div class="contract-info fade-in">
+                    <p>The Mark of the Beast</p>
+                    <div id="contract-address" class="contract-address" title="Copy contract address">
+                        <span id="contract-text" class="contract-address__text">0xFf7d6A96ae471BbCD7713aF9CB1fEeB16cf56B41</span>
+                        <svg class="contract-address__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16H6C4.89543 16 4 15.1046 4 14V6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6V8M18 10V18C18 19.1046 17.1046 20 16 20H10C8.89543 20 8 19.1046 8 18V10C8 8.89543 8.89543 8 10 8H16C17.1046 8 18 8.89543 18 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                    <span id="copy-feedback" class="copy-feedback">Copied to clipboard!</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Buy Section -->
+        <section id="how-to-buy" class="how-to-buy">
+            <div class="container">
+                <h2 class="fade-in">JOIN THE HUNT</h2>
+                <div class="how-to-buy__steps">
+                    <div class="how-to-buy__step fade-in">
+                        <div class="how-to-buy__step-number">1</div>
+                        <h3>CREATE A WALLET</h3>
+                        <p>Download MetaMask or your wallet of choice from the App Store or Google Play for free. Desktop users, download the Google Chrome extension by going to metamask.io.</p>
+                    </div>
+                    <div class="how-to-buy__step fade-in" style="transition-delay: 0.2s;">
+                        <div class="how-to-buy__step-number">2</div>
+                        <h3>GET SOME ETH</h3>
+                        <p>Have ETH in your wallet to swap for $TB. If you don’t have any ETH, you can buy directly on MetaMask, transfer from another wallet, or buy on another exchange and send it to your wallet.</p>
+                    </div>
+                    <div class="how-to-buy__step fade-in" style="transition-delay: 0.4s;">
+                        <div class="how-to-buy__step-number">3</div>
+                        <h3>SWAP FOR $TB</h3>
+                        <p>Go to Uniswap. Connect your wallet. Paste the $TB token address into Uniswap, select $TB, and confirm. When MetaMask prompts you for a wallet signature, sign.</p>
+                    </div>
+                </div>
+                <div class="how-to-buy__cta-container fade-in">
+                     <a href="https://app.uniswap.org/" target="_blank" rel="noopener noreferrer" class="hero__cta">Buy on Uniswap</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <h2 class="fade-in">PATH OF DOMINANCE</h2>
+                <div class="roadmap__item fade-in">
+                    <h3>Phase 1: The Awakening</h3>
+                    <ul>
+                        <li>Stealth Launch</li>
+                        <li>Website & Socials Deployment</li>
+                        <li>Initial Community Formation</li>
+                        <li>Liquidity Locked</li>
+                    </ul>
+                </div>
+                <div class="roadmap__item fade-in">
+                    <h3>Phase 2: The Stalk</h3>
+                    <ul>
+                        <li>Aggressive Marketing Campaign</li>
+                        <li>CoinGecko & CoinMarketCap Listing</li>
+                        <li>Community Growth Initiatives</li>
+                        <li>First Wave of Influencer Collaborations</li>
+                    </ul>
+                </div>
+                <div class="roadmap__item fade-in">
+                    <h3>Phase 3: The Pounce</h3>
+                    <ul>
+                        <li>Major Exchange Listings</li>
+                        <li>Ecosystem Utility Development</li>
+                        <li>Strategic Partnerships</li>
+                        <li>Establish Market Dominance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__content">
+            <img src="https://yoahusjzxyasdporfmmt.supabase.co/storage/v1/object/public/token-logos/2391250f-349b-4d04-beec-47c34964120e.png?" alt="the bear logo" class="footer__logo">
+            <h3>the bear ($TB)</h3>
+            <p>&copy; 2024 the bear. All rights reserved.</p>
+            <p>$TB is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. The coin is completely useless and for entertainment purposes only.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Intersection Observer for fade-in animations ---
+            const faders = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+
+            // --- Contract Address Copy Functionality ---
+            const contractAddressElement = document.getElementById('contract-address');
+            const contractTextElement = document.getElementById('contract-text');
+            const copyFeedbackElement = document.getElementById('copy-feedback');
+
+            if (contractAddressElement) {
+                contractAddressElement.addEventListener('click', () => {
+                    const textToCopy = contractTextElement.innerText;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Show feedback
+                        copyFeedbackElement.style.opacity = '1';
+                        
+                        // Hide feedback after 2 seconds
+                        setTimeout(() => {
+                            copyFeedbackElement.style.opacity = '0';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
